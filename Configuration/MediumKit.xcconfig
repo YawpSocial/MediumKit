@@ -1,0 +1,17 @@
+
+#include "../Submodules/xcconfigs/Base/Targets/Framework.xcconfig"
+#include "../Submodules/xcconfigs/Base/Configurations/Release.xcconfig"
+
+PRODUCT_NAME = MediumKit
+PRODUCT_BUNDLE_IDENTIFIER = com.pilgrimagesoftware.MediumKit
+MODULE_NAME = MediumKit
+IBSC_MODULE = MediumKit
+PRODUCT_MODULE_NAME = MediumKit
+EXECUTABLE_NAME = MediumKit
+
+INFOPLIST_FILE = Sources/MediumKit/Info.plist
+
+SWIFT_VERSION = 4.0
+SWIFT_SWIFT3_OBJC_INFERENCE = YES
+
+LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks @loader_path/../Frameworks
