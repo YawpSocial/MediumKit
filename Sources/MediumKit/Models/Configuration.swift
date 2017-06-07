@@ -11,9 +11,6 @@ import Foundation
 
 public struct Configuration {
     public let mediaEndpoint : URL
-    
-    public init() {
-    }
 }
 
 
