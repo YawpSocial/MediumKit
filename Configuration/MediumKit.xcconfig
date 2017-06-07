@@ -11,7 +11,7 @@ EXECUTABLE_NAME = MediumKit
 
 INFOPLIST_FILE = Sources/MediumKit/Info.plist
 
-SWIFT_VERSION = 4.0
+SWIFT_VERSION = 3.2
 SWIFT_SWIFT3_OBJC_INFERENCE = YES
 
 LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks @loader_path/../Frameworks
