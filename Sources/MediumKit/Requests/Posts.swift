@@ -68,7 +68,7 @@ public struct Posts {
             json["canonicalURL"] = canonicalURL.absoluteString
         }
         let data = try! JSONSerialization.data(withJSONObject: json)
-        let method = HTTPMethod.post(Payload.data(data))
+        let method = HTTPMethod.post(Payload.json(data))
 
         return Request<Post>(path: "/publications/\(publicationId)/posts", method: method, parse: Request<Post>.parser)
     }
