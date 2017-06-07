@@ -6,7 +6,7 @@ public struct Post {
     public let title : String
     public let authorId : String
     public let tags : [String]?
-    public let URL : URL
+    public let url : URL
     public let canonicalURL : URL
     public let publishStatus : PublishStatus
     public let publishedAt : Date
@@ -38,7 +38,7 @@ extension Post : Serializable {
         self.title = title
         self.authorId = authorId
         self.tags = json["tags"] as? [String]
-        self.URL = url
+        self.url = url
         self.canonicalURL = canonicalUrl
         self.publishStatus = publishStatus
         self.publishedAt = Date(timeIntervalSince1970: publishedAt)
@@ -51,7 +51,7 @@ extension Post : Serializable {
             "id" : id,
             "title" : title,
             "authorId" : authorId,
-            "url" : URL.absoluteString,
+            "url" : url.absoluteString,
             "canonicalUrl" : canonicalURL.absoluteString,
             "publishStatus" : publishStatus.rawValue,
             "publishedAt" : publishedAt.timeIntervalSince1970,

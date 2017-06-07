@@ -5,7 +5,7 @@ public struct Publication {
     public let id : String
     public let name : String
     public let desc : String
-    public let URL : URL
+    public let url : URL
     public let imageURL : URL
 }
 
@@ -25,7 +25,7 @@ extension Publication : Serializable {
         self.id = id
         self.name = name
         self.desc = desc
-        self.URL = url
+        self.url = url
         self.imageURL = imageUrl
     }
     
@@ -34,7 +34,7 @@ extension Publication : Serializable {
             "id" : id,
             "name" : name,
             "description" : desc,
-            "url" : URL.absoluteString,
+            "url" : url.absoluteString,
             "imageUrl" : imageURL.absoluteString,
             ]
         

@@ -2,7 +2,7 @@ import Foundation
 
 
 public struct Image {
-    public let URL : URL
+    public let url : URL
     public let md5 : String
 }
 
@@ -15,13 +15,13 @@ extension Image : Serializable {
             let md5 = json["md5"] as? String
             else { return nil }
         
-        self.URL = url
+        self.url = url
         self.md5 = md5
     }
     
     public func toDictionary() -> JSONDictionary {
         let dict : JSONDictionary = [
-            "url" : URL.absoluteString,
+            "url" : url.absoluteString,
             "md5" : md5,
             ]
         
