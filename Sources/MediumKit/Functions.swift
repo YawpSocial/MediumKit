@@ -3,10 +3,6 @@ import Foundation
 
 // MARK: - Map
 
-func toString(scope: AccessScope) -> String {
-    return scope.rawValue
-}
-
 func toArrayOfParameters<A>(withName name: String) -> (A) -> Parameter {
     return { value in Parameter(name: "\(name)[]", value: String(describing: value)) }
 }
