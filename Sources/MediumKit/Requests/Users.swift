@@ -12,7 +12,7 @@ public struct Users {
     public static func publications(userId : String) -> Request<[Publication]> {
         let method = HTTPMethod.get(Payload.empty)
 
-        return Request<User>(path: "/users/\(userId)/publications", method: method, parse: Request<User>.parser)
+        return Request<[Publication]>(path: "/users/\(userId)/publications", method: method, parse: Request<[Publication]>.parser)
     }
 
 }
