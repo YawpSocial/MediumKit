@@ -1,117 +1,66 @@
 import Foundation
 
 
-#if os(iOS) || os(macOS)
-    private let dateFormatter = ISO8601DateFormatter()
-#else
-    private let dateFormatter = DateFormatter()
-#endif
-
 public struct Post {
-    public var createdAt : Date
-    public var guid : String
-    public var id : String
-    public var isDeleted : Bool
-    public var isNSFW : Bool
-    public var source : Source
-    public var user : User?
-    public var threadId : String
-    public var replyTo : String?
-    public var repostOf : Indirect<Post>?
-    public struct Counts {
-        public var bookmarks : Int = 0
-        public var replies : Int = 0
-        public var reposts : Int = 0
-        public var threads : Int = 0
-    }
-    public var counts = Counts()
-    public var content : Content?
-    public var youBookmarked : Bool?
-    public var youReposted : Bool?
-    public var raw : [Raw]
+    public let id : String
+    public let title : String
+    public let authorId : String
+    public let tags : [String]?
+    public let URL : URL
+    public let canonicalURL : URL
+    public let publishStatus : PublishStatus
+    public let publishedAt : Date
+    public let license : License
+    public let licenseURL : URL 
 }
 
 
 extension Post : Serializable {
-
-    public init?(from dict : JSONDictionary) {
-        guard let c = dict["created_at"] as? String,
-            let createdAt = dateFormatter.date(from: c),
-            let guid = dict["guid"] as? String,
-            let id = dict["id"] as? String,
-            let s = dict["source"] as? [String : String],
-            let source = Source(from: s),
-            let threadId = dict["thread_id"] as? String,
-            let counts = dict["counts"] as? [String : Int]
+    
+    public init?(from json : JSONDictionary) {
+        guard let id = json["id"] as? String,
+            let title = json["title"] as? String,
+            let authorId = json["authorId"] as? String,
+            let u = json["url"] as? String,
+            let url = URL(string: u),
+            let c = json["canonicalUrl"] as? String,
+            let canonicalUrl = URL(string: c),
+            let p = json["publishStatus"] as? String,
+            let publishStatus = PublishStatus(rawValue: p),
+            let publishedAt = json["publishedAt"] as? TimeInterval,
+            let l = json["license"] as? String,
+            let license = License(rawValue: l),
+            let lu = json["licenseUrl"] as? String,
+            let licenseUrl = URL(string: lu)
             else { return nil }
-
-        self.createdAt = createdAt
-        self.guid = guid
+        
         self.id = id
-        self.isDeleted = dict["is_deleted"] as? Bool ?? false
-        self.isNSFW = dict["is_nsfw"] as? Bool ?? false
-        self.source = source
-        self.user = User(from: (dict["user"] as? [String : Any] ?? [:])) ?? .deleted
-        self.threadId = threadId
-        self.replyTo = dict["reply_to"] as? String
-        if let repostOf = dict["repost_of"] as? [String : Any],
-            let repost = Post(from: repostOf) {
-            self.repostOf = Indirect(repost)
-        }
-        self.counts.bookmarks = counts["bookmarks"] ?? 0
-        self.counts.replies = counts["replies"] ?? 0
-        self.counts.reposts = counts["reposts"] ?? 0
-        self.counts.threads = counts["threads"] ?? 0
-        self.content = Content(from: dict["content"] as? [String : Any] ?? [:])
-        self.youBookmarked = dict["you_bookmarked"] as? Bool
-        self.youReposted = dict["you_reposted"] as? Bool
-
-        if let raw = dict["raw"] as? [[String : Any]] {
-            self.raw = raw.flatMap { Raw(from: $0) }
-        }
-        else {
-            self.raw = []
-        }
+        self.title = title
+        self.authorId = authorId
+        self.tags = json["tags"] as? [String]
+        self.URL = url
+        self.canonicalURL = canonicalUrl
+        self.publishStatus = publishStatus
+        self.publishedAt = Date(timeIntervalSince1970: publishedAt)
+        self.license = license
+        self.licenseURL = licenseUrl
     }
-
+    
     public func toDictionary() -> JSONDictionary {
         var dict : JSONDictionary = [
-            "created_at" : dateFormatter.string(from: createdAt),
-            "guid" : guid,
             "id" : id,
-            "is_deleted" : isDeleted,
-            "is_nsfw" : isNSFW,
-            "source" : source.toDictionary(),
-            "counts" : [
-                "bookmarks" : counts.bookmarks,
-                "replies" : counts.replies,
-                "reposts" : counts.reposts,
-                "threads" : counts.threads,
-            ],
+            "title" : title,
+            "authorId" : authorId,
+            "url" : URL.absoluteString,
+            "canonicalUrl" : canonicalURL.absoluteString,
+            "publishStatus" : publishStatus.rawValue,
+            "publishedAt" : publishedAt.timeIntervalSince1970,
+            "license" : license.rawValue,
+            "licenseUrl" : licenseURL.absoluteString,
             ]
-
-        if let user = user {
-            dict["user"] = user.toDictionary()
-        }
-
-        if let replyTo = replyTo {
-            dict["reply_to"] = replyTo
-        }
-
-        if let repostOf = repostOf {
-            dict["repost_of"] = repostOf.value.toDictionary()
-        }
-
-        if let content = content {
-            dict["content"] = content.toDictionary()
-        }
-
-        if let youBookmarked = youBookmarked {
-            dict["you_bookmarked"] = youBookmarked
-        }
-
-        if let youReposted = youReposted {
-            dict["you_reposted"] = youReposted
+        
+        if let tags = self.tags {
+            dict["tags"] = tags
         }
         
         return dict
