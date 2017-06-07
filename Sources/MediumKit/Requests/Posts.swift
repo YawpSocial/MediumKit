@@ -14,14 +14,63 @@ public struct Posts {
      - parameter parseMarkdownLinks: Optional boolean whether the markdown links should be parsed by the server. Default true.
      - parameter updateMarker: Indicates whether the stream marker should be updated to this post.
      */
-    public static func create(text : String) -> Request<Post> {
-        let parameters = [
-            Parameter(name: "h", value: "entry"),
-            Parameter(name: "content", value: text),
-            ]
-        let method = HTTPMethod.post(Payload.parameters(parameters))
+    public static func create(authorId : String, title : String, format : ContentFormat, content : String,
+                              tags : [String]? = nil, canonicalURL : URL? = nil, publishStatus : PublishStatus = .public,
+                              license : License = .allRightsReserved, notifyFollowers : Bool = false) -> Request<Post> {
+        var json : JSONDictionary = [
+            "title" : title,
+            "contentFormat" : format.rawValue,
+            "content" : content,
+            "publishStatus" : publishStatus.rawValue,
+            "license" : license.rawValue,
+            "notifyFollowers" : notifyFollowers,
+        ]
 
-        return Request<Post>(path: "/micropub", method: method, parse: Request<Post>.parser)
+        if let tags = tags {
+            json["tags"] = tags
+        }
+        if let canonicalURL = canonicalURL {
+            json["canonicalURL"] = canonicalURL.absoluteString
+        }
+        let data = try! JSONSerialization.data(withJSONObject: json)
+        let method = HTTPMethod.post(Payload.json(data))
+
+        return Request<Post>(path: "/users/\(authorId)/posts", method: method, parse: Request<Post>.parser)
+    }
+
+    /**
+     Create a new post.
+
+     - parameter text: The body of the post. 256 character-limited string.
+     - parameter isNSFW: Optional boolean whether the post should be marked as "NSFW" (Not Safe For Work/mature/offensive).
+     - parameter replyTo: Optional ID of another post to reply to.
+     - parameter raw: An array of `Raw` objects that will be attached to the post.
+     - parameter parseLinks: Optional boolean whether the links should be parsed by the server.
+     - parameter parseMarkdownLinks: Optional boolean whether the markdown links should be parsed by the server. Default true.
+     - parameter updateMarker: Indicates whether the stream marker should be updated to this post.
+     */
+    public static func create(publicationId : String, title : String, format : ContentFormat, content : String,
+                              tags : [String]? = nil, canonicalURL : URL? = nil, publishStatus : PublishStatus = .public,
+                              license : License = .allRightsReserved, notifyFollowers : Bool = false) -> Request<Post> {
+        var json : JSONDictionary = [
+            "title" : title,
+            "contentFormat" : format.rawValue,
+            "content" : content,
+            "publishStatus" : publishStatus.rawValue,
+            "license" : license.rawValue,
+            "notifyFollowers" : notifyFollowers,
+            ]
+
+        if let tags = tags {
+            json["tags"] = tags
+        }
+        if let canonicalURL = canonicalURL {
+            json["canonicalURL"] = canonicalURL.absoluteString
+        }
+        let data = try! JSONSerialization.data(withJSONObject: json)
+        let method = HTTPMethod.post(Payload.data(data))
+
+        return Request<Post>(path: "/publications/\(publicationId)/posts", method: method, parse: Request<Post>.parser)
     }
 
     public static func get(postId : String, raw : Bool? = nil) -> Request<Post> {

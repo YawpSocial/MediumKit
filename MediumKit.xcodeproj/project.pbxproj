@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B49044A1EE8A93F00DA65C5 /* Contributor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4904491EE8A93F00DA65C5 /* Contributor.swift */; };
+		5B49044C1EE8AE1D00DA65C5 /* ContentFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49044B1EE8AE1D00DA65C5 /* ContentFormat.swift */; };
+		5B49044E1EE8AE2300DA65C5 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49044D1EE8AE2300DA65C5 /* License.swift */; };
+		5B4904501EE8AE3E00DA65C5 /* PublishStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B49044F1EE8AE3E00DA65C5 /* PublishStatus.swift */; };
+		5B4904521EE8B53100DA65C5 /* MediaAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4904511EE8B52A00DA65C5 /* MediaAttachment.swift */; };
 		5BB73D431EE7B4EE00659099 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB73D231EE7B38400659099 /* APIClient.swift */; };
 		5BB73D441EE7B4EE00659099 /* ClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB73D241EE7B38400659099 /* ClientError.swift */; };
 		5BB73D451EE7B4EE00659099 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB73D2A1EE7B38400659099 /* Functions.swift */; };
@@ -36,7 +41,7 @@
 		5BB73D5E1EE7B4F300659099 /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB73D281EE7B38400659099 /* URLComponents.swift */; };
 		5BB73D5F1EE7B4F300659099 /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB73D291EE7B38400659099 /* URLRequest.swift */; };
 		5BB73D601EE7B4FB00659099 /* MediumKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB73D201EE7B37800659099 /* MediumKitTests.swift */; };
-		5BD692391ED48E9100A323C6 /* .framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD6922F1ED48E9000A323C6 /* .framework */; };
+		5BD692391ED48E9100A323C6 /* MediumKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD6922F1ED48E9000A323C6 /* MediumKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +55,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B4904491EE8A93F00DA65C5 /* Contributor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contributor.swift; sourceTree = "<group>"; };
+		5B49044B1EE8AE1D00DA65C5 /* ContentFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentFormat.swift; sourceTree = "<group>"; };
+		5B49044D1EE8AE2300DA65C5 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		5B49044F1EE8AE3E00DA65C5 /* PublishStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishStatus.swift; sourceTree = "<group>"; };
+		5B4904511EE8B52A00DA65C5 /* MediaAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAttachment.swift; sourceTree = "<group>"; };
 		5B7CD5DA1EDFAD70000CD810 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		5BB73D1C1EE7B33A00659099 /* MediumKit.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = MediumKit.xcconfig; sourceTree = "<group>"; };
 		5BB73D1F1EE7B37800659099 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,7 +93,7 @@
 		5BB73D401EE7B38500659099 /* Publications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publications.swift; sourceTree = "<group>"; };
 		5BB73D411EE7B38500659099 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		5BB73D421EE7B38500659099 /* Serializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
-		5BD6922F1ED48E9000A323C6 /* .framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = .framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BD6922F1ED48E9000A323C6 /* MediumKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediumKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD692381ED48E9100A323C6 /* MediumKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MediumKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -99,7 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BD692391ED48E9100A323C6 /* .framework in Frameworks */,
+				5BD692391ED48E9100A323C6 /* MediumKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +151,7 @@
 				5BB73D2B1EE7B38400659099 /* HTTPMethod.swift */,
 				5BB73D2C1EE7B38400659099 /* Indirection.swift */,
 				5BB73D2D1EE7B38400659099 /* Info.plist */,
+				5B4904511EE8B52A00DA65C5 /* MediaAttachment.swift */,
 				5BB73D2E1EE7B38400659099 /* Models */,
 				5BB73D371EE7B38400659099 /* Parameter.swift */,
 				5BB73D381EE7B38400659099 /* Payload.swift */,
@@ -168,10 +179,14 @@
 			isa = PBXGroup;
 			children = (
 				5BB73D2F1EE7B38400659099 /* Configuration.swift */,
+				5B4904491EE8A93F00DA65C5 /* Contributor.swift */,
 				5BB73D301EE7B38400659099 /* Image.swift */,
 				5BB73D311EE7B38400659099 /* LoginResponse.swift */,
 				5BB73D321EE7B38400659099 /* Post.swift */,
 				5BB73D331EE7B38400659099 /* Publication.swift */,
+				5B49044B1EE8AE1D00DA65C5 /* ContentFormat.swift */,
+				5B49044D1EE8AE2300DA65C5 /* License.swift */,
+				5B49044F1EE8AE3E00DA65C5 /* PublishStatus.swift */,
 				5BB73D341EE7B38400659099 /* RequestError.swift */,
 				5BB73D351EE7B38400659099 /* Token.swift */,
 				5BB73D361EE7B38400659099 /* User.swift */,
@@ -205,7 +220,7 @@
 		5BD692301ED48E9000A323C6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5BD6922F1ED48E9000A323C6 /* .framework */,
+				5BD6922F1ED48E9000A323C6 /* MediumKit.framework */,
 				5BD692381ED48E9100A323C6 /* MediumKitTests.xctest */,
 			);
 			name = Products;
@@ -247,7 +262,7 @@
 			);
 			name = MediumKit;
 			productName = MediumKit;
-			productReference = 5BD6922F1ED48E9000A323C6 /* .framework */;
+			productReference = 5BD6922F1ED48E9000A323C6 /* MediumKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		5BD692371ED48E9100A323C6 /* MediumKitTests */ = {
@@ -288,6 +303,7 @@
 					5BD692371ED48E9100A323C6 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = DQUTMGPMX5;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -332,14 +348,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B49044C1EE8AE1D00DA65C5 /* ContentFormat.swift in Sources */,
 				5BB73D501EE7B4EE00659099 /* User.swift in Sources */,
 				5BB73D581EE7B4EE00659099 /* Posts.swift in Sources */,
+				5B4904521EE8B53100DA65C5 /* MediaAttachment.swift in Sources */,
 				5BB73D531EE7B4EE00659099 /* Request.swift in Sources */,
 				5BB73D4A1EE7B4EE00659099 /* Image.swift in Sources */,
 				5BB73D491EE7B4EE00659099 /* Configuration.swift in Sources */,
 				5BB73D521EE7B4EE00659099 /* Payload.swift in Sources */,
 				5BB73D591EE7B4EE00659099 /* Publications.swift in Sources */,
 				5BB73D461EE7B4EE00659099 /* HTTPMethod.swift in Sources */,
+				5B4904501EE8AE3E00DA65C5 /* PublishStatus.swift in Sources */,
 				5BB73D4F1EE7B4EE00659099 /* Token.swift in Sources */,
 				5BB73D511EE7B4EE00659099 /* Parameter.swift in Sources */,
 				5BB73D4E1EE7B4EE00659099 /* RequestError.swift in Sources */,
@@ -353,6 +372,8 @@
 				5BB73D441EE7B4EE00659099 /* ClientError.swift in Sources */,
 				5BB73D5E1EE7B4F300659099 /* URLComponents.swift in Sources */,
 				5BB73D451EE7B4EE00659099 /* Functions.swift in Sources */,
+				5B49044A1EE8A93F00DA65C5 /* Contributor.swift in Sources */,
+				5B49044E1EE8AE2300DA65C5 /* License.swift in Sources */,
 				5BB73D4D1EE7B4EE00659099 /* Publication.swift in Sources */,
 				5BB73D4C1EE7B4EE00659099 /* Post.swift in Sources */,
 				5BB73D5D1EE7B4F300659099 /* Data.swift in Sources */,
@@ -485,6 +506,7 @@
 		};
 		5BD692441ED48E9100A323C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BB73D1C1EE7B33A00659099 /* MediumKit.xcconfig */;
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -495,6 +517,7 @@
 		};
 		5BD692451ED48E9100A323C6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BB73D1C1EE7B33A00659099 /* MediumKit.xcconfig */;
 			buildSettings = {
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -512,7 +535,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pilgrimagesoftware.lib.MediumKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -525,7 +549,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pilgrimagesoftware.lib.MediumKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
